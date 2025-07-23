@@ -1,0 +1,180 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} 
+
+:root {
+    --purple-700: hsl(257, 40%, 49%);
+    --magenta-400: hsl(300, 69%, 71%);
+    --white: hsl(0, 0%, 100%);
+}
+
+body { 
+    background-color: var(--purple-700);
+    background-image: url('../images/bg-mobile.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--white);
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+/* --- ESTILOS BASE (MOBILE FIRST) --- */
+
+.landing-page {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2.5rem;
+}
+
+.landing-page__logo {
+    width: 120px;
+    margin-bottom: 4rem;
+}
+
+.landing-page__mockup {
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.landing-page__info {
+    text-align: center;
+}
+
+.landing-page__title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.landing-page__text { 
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.landing-page__register-button { 
+    display: inline-block;
+    padding: 0.8rem 5rem;
+    border-radius: 50px;
+    background-color: var(--white);
+    color: var(--purple-700);
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.landing-page__register-button:hover {
+    background-color: var(--magenta-400);
+    color: var(--white);
+}
+
+.landing-page__social {
+    margin-top: 4rem;
+}
+
+.landing-page__social-list { 
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+.landing-page__social-item a { 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.landing-page__social-item a:hover {
+    color: var(--magenta-400);
+    border-color: var(--magenta-400);
+}
+
+
+/* --- ESTILOS PARA ESCRITORIO --- */
+
+@media (min-width: 1024px) {
+    body {
+        background-image: url('../images/bg-desktop.svg');
+        background-size: cover;
+    }
+
+    .landing-page {
+        max-width: 1280px;
+        padding: 4rem;
+
+        /* Se activa el layout de Grid */
+        display: grid;
+        grid-template-columns: 1fr 0.8fr; /* La primera columna es más grande */
+        grid-template-rows: auto 1fr auto;
+        gap: 2rem 4rem; /* 2rem de espacio vertical, 4rem horizontal */
+
+        /* Se define el "mapa" del layout */
+        grid-template-areas:
+            "logo   logo"
+            "mockup info"
+            ".      social"; /* El punto '.' indica una celda vacía */
+    }
+
+    /* Asignamos cada elemento a su área */
+
+    .landing-page__logo {
+        grid-area: logo;
+        margin-bottom: 0;
+    }
+
+    .landing-page__mockup {
+        grid-area: mockup;
+        margin-bottom: 0;
+    }
+
+    .landing-page__info {
+        grid-area: info;
+        text-align: left;
+        padding-top: 2rem;
+    }
+
+    .landing-page__title {
+        font-size: 2.5rem;
+    }
+
+    .landing-page__register-button {
+        padding: 1rem 4rem;
+    }
+
+    .landing-page__social {
+        grid-area: social;
+        justify-self: end; /* Alinea los íconos a la derecha */
+        margin-top: 0;
+    }
+}
+
+.attribution {
+    text-align: center;
+    color: var(--white);
+    padding: 1rem;
+}
+.attribution a {
+    color: var(--magenta-400);
+    font-weight: 700;
+    text-decoration: none;
+}
